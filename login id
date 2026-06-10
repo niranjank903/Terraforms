@@ -1,0 +1,54 @@
+import os
+
+def list_files():
+    files = os.listdir()
+    print("\nFiles in current directory:")
+    for f in files:
+        print(f)
+
+def create_file():
+    name = input("Enter file name: ")
+    with open(name, 'w') as f:
+        f.write("New file created")
+    print("File created successfully!")
+
+def delete_file():
+    name = input("Enter file name to delete: ")
+    if os.path.exists(name):
+        os.remove(name)
+        print("File deleted successfully!")
+    else:
+        print("File not found!")
+
+def rename_file():
+    old_name = input("Enter current file name: ")
+    new_name = input("Enter new file name: ")
+    if os.path.exists(old_name):
+        os.rename(old_name, new_name)
+        print("File renamed successfully!")
+    else:
+        print("File not found!")
+
+while True:
+    print("\n==== FILE MANAGER ====")
+    print("1. List Files")
+    print("2. Create File")
+    print("3. Delete File")
+    print("4. Rename File")
+    print("5. Exit")
+
+    choice = input("Enter choice: ")
+
+    if choice == '1':
+        list_files()
+    elif choice == '2':
+        create_file()
+    elif choice == '3':
+        delete_file()
+    elif choice == '4':
+        rename_file()
+    elif choice == '5':
+        print("Exiting...")
+        break
+    else:
+        print("Invalid choice!")
